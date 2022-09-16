@@ -1,8 +1,11 @@
 package main
 
 func main() {
-	// main01HelloWorld()
-	// main01VariableDeclaration()
-	// main01VariableTypeNumberAndBoolean()
+	// 01 Basic
+	main01HelloWorld()
+	main01VariableAndConstantDeclaration()
+	main01VariableTypeNumberAndBoolean()
 	main01VariableTypeString()
+
+	// 02 Modules
 }
