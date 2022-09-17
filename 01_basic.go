@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main01HelloWorld() {
 	// Use fmt package to print text to console
@@ -108,3 +111,37 @@ func main01VariableTypeString() {
 	fmt.Println(varStr)
 	fmt.Println(varLenStr, varCharStr)
 }
+
+func main01VariableTypeConversion() {
+	// Even same integer variable,
+	// to operate between integer variable you need to convert it to exact same variable
+	var varInt int = 10
+	var varInt32 int32 = 10
+	var varInt64Result int64
+
+	// You can't use it directly, because the variable is not exact same type
+	// varInt64Result = varInt + varInt32 // <-- This will be throw error on compilation
+	varInt64Result = int64(varInt) + int64(varInt32) // You need to convert it first
+
+	fmt.Println(varInt64Result)
+
+	// String variable
+	var varStr string = "Rozi"
+	var varStrChar byte = varStr[0]
+
+	fmt.Println(varStrChar)         // You will print the ASCII value number of the character
+	fmt.Println(string(varStrChar)) // You will print the character string
+
+	// String to integer
+	varStr = "2000" // Comment this if you want to see error message
+
+	// var varStrToInt int = int(varStr) // You can't parse it directly to became integer, you need additional function
+	varStrToInt, err := strconv.Atoi(varStr) // You can't parse it directly to became integer, you need additional function
+
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(varStrToInt)
+	}
+}
+
