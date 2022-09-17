@@ -145,3 +145,82 @@ func main01VariableTypeConversion() {
 	}
 }
 
+func main01TypeDeclaration() {
+	// Struct of identity
+	type identity struct {
+		name      string
+		id_number int
+	}
+	// Type declaration is mechanism to give variable a new name or a new alias
+	type kata string
+	type angka int
+	type ktp identity
+
+	// You can use like a normal variable
+	var kalimat kata = "Kalimat adalah susunan kata"
+	var jumlah angka = 1
+	var jumlah_total angka = 1
+
+	// Operating like the real variable type
+	jumlah_total = jumlah + 1
+
+	// Println all data
+	fmt.Println(kalimat)
+	fmt.Println(jumlah)
+	fmt.Println(jumlah_total)
+}
+func main01MathematicOperator() {
+	// You can use mathematical operator with all number variable
+	var varFloatA float32 = 10.20
+	var varFloatB float32 = 6.40
+	var varFloatAdd float32 = varFloatA + varFloatB      // Add operator +
+	var varFloatMin float32 = varFloatA - varFloatB      // Min operator -
+	var varFloatMultiply float32 = varFloatA * varFloatB // Multiply operator *
+	var varFloatDivide float32 = varFloatA / varFloatB   // Divide operator /
+	// var varFloatMod float32 = varFloatA % varFloatB // Except for mod operator, you just only use it with integer
+
+	var varIntA int = 21
+	var varIntB int = 5
+	var varIntMod int = varIntA % varIntB // You just can only use modulus operator with integer
+
+	fmt.Println(varFloatAdd, varFloatMin, varFloatMultiply, varFloatDivide)
+
+	fmt.Println(varIntMod)
+
+	// Augmented operation : Is a short operation you can use the operate the value of variable with another value
+	varIntA += 10 // Equal to : varIntA = varIntA + 10
+	fmt.Println(varIntA)
+
+	varIntA -= 10 // Equal to : varIntA = varIntA - 10
+	fmt.Println(varIntA)
+
+	varIntA *= 10 // Equal to : varIntA = varIntA * 10
+	fmt.Println(varIntA)
+
+	varIntA /= 10 // Equal to : varIntA = varIntA / 10
+	fmt.Println(varIntA)
+
+	varIntA %= 10 // Equal to : varIntA = varIntA * 10
+	fmt.Println(varIntA)
+
+	// Unary Operator :	Is a operation with single operan
+	varIntA++ // Equal to : varIntA = varIntA + 1
+	fmt.Println(varIntA)
+
+	varIntA-- // Equal to : varIntA = varIntA - 1
+	fmt.Println(varIntA)
+
+	varIntA = -varIntA // Equal to : varIntA = varIntA * -1
+	fmt.Println( varIntA)
+
+	varIntA = +varIntA // Equal to : varIntA = varIntA * +1
+	fmt.Println(varIntA)
+
+	var varBool bool = true
+	varBool = !varBool // Equal to : If value is true it will be false, if value is false it will be true
+}
+
+func main01ComparisonOperator() {
+	// You can compare number string variable
+	
+}
