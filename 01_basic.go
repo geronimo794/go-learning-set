@@ -477,6 +477,9 @@ func main01LoopingAndBreakContinueStatement() {
 		fmt.Println("Print normal loop with continue -", i)
 	}
 }
+func main01FunctionStatementWithReturn(name string) string {
+	return "Hello World " + name
+}
 func main01FunctionStatement() {
 	// FUNCTION AS VARIABLE
 	// You save a function to a variable
@@ -486,8 +489,12 @@ func main01FunctionStatement() {
 	// And then you can call it like a normal function
 	varFunc()
 
-	// But you can't use outside function to a variable
-	// var varFunctOutside func() = main01LoopingAndBreakContinueStatement() // <-- This will be throw error
+	// You can use outside function too
+	varFunctOutside := main01FunctionStatementWithReturn("name") // <-- This will be throw error
+	fmt.Println(varFunctOutside)
+
+	// But you can't use outside function to a variable if there is no return value
+	// varFunctOutsideNoReturn := main01LoopingAndBreakContinueStatement() // <-- This will be throw error
 
 	// FUNCTION AS VARIABLE TO A FUNCTION
 	// Or you can pass function to a function with another variable type
@@ -536,4 +543,56 @@ func main01FunctionStatement() {
 	// With variadic function you can use as much as parameter. Or none
 	fmt.Println(varFuncVariadic("Hello World", 1, 2, 3, 4))
 	fmt.Println(varFuncVariadic("Hello World"))
+
+	// We can use slice of variabel as variadic function parameter too
+	var varSliceInt []int = []int{
+		1, 2, 3,
+	}
+	fmt.Println(varFuncVariadic("Hello World", varSliceInt...))
+
+	// ANONYMOUS FUNCTION
+	// When we pass a function to a parameter, we can create the function directly with anonymous function
+	varFuncNeedFunct("String", func() {
+		fmt.Println("Anonymous funct without name")
+	})
+
+	// CLOSURE
+	// A function can interact with the near or upper variable
+	var counter int = 0
+	var incrementCount = func() {
+		counter++
+	}
+	incrementCount()
+	incrementCount()
+	fmt.Println(counter)
+
+	// DEFER PANIC and RECOVER
+	// Defer is mechanism of a function after the function is done to be execute
+	// Panic is mechanism of function to throw error
+	// Recover is mechanism to catch panic
+	var varFuncWithDefer func() = func() {
+		defer fmt.Println("This will be execute last")
+		fmt.Println("This will be execute first")
+	}
+	varFuncWithDefer()
+
+	// name this function with varFuncWithPanic
+	var _ func() = func() {
+		defer fmt.Println("varFuncWithPanic : This will be execute last")
+		panic("varFuncWithPanic : This will be throw error")
+	}
+	// varFuncWithPanic() // If you call this, the next code will be not execute
+
+	var varFuncWithRecover func() = func() {
+		defer func() {
+			fmt.Println("varFuncWithRecover : Please recover")
+			panicMessage := recover()
+			if panicMessage != nil {
+				fmt.Println(panicMessage)
+			}
+		}() // When nee () on the last, to execute the function
+		//  If not, this will be just a pointer
+		panic("varFuncWithRecover : This will be throw error")
+	}
+	varFuncWithRecover()
 }
