@@ -6,7 +6,7 @@ This repository content insipired from Udemy course by Eko Kurniawan Khannedy(a.
 1. Comment or un comment the code that you want to try
 1. Happy coding!
 ## Content Index
-1. 01_basic.go :
+- 01_basic.go :
     - main01HelloWorld()
     - main01VariableAndConstantDeclaration()
     - main01VariableTypeNumberAndBoolean()
@@ -23,4 +23,4 @@ This repository content insipired from Udemy course by Eko Kurniawan Khannedy(a.
     - main01FunctionStatement()
     - main01StructDataType()
 
-1. 02_modules.go
+- 02_modules.go
