@@ -596,3 +596,33 @@ func main01FunctionStatement() {
 	}
 	varFuncWithRecover()
 }
+
+// Create a simple struct
+type address struct {
+	city     string
+	province string
+}
+
+func (add address) print() {
+
+}
+func main01StructDataType() {
+	// Struct or I call it structure is a datatype that can contain multiple and nested data type
+	// You can directly declare a struct and it's value
+	var varAddress = address{
+		city:     "Malang",
+		province: "Jawa TImur",
+	}
+	fmt.Println("varAddress :", varAddress)
+
+	// Or you can declare the value later
+	var varAddressDecl address
+	varAddressDecl.city = "Surabaya"
+	varAddressDecl.province = "Jawa Timur"
+	fmt.Println("varAddressDecl :", varAddressDecl)
+
+	// Or you can declare without the field
+	var varAddressDecl2 = address{"Jakarta", "DKI Jakarta"}
+	fmt.Println("varAddressDecl2 :", varAddressDecl2)
+
+}

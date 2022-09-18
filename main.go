@@ -11,7 +11,9 @@ func main() {
 	// main01ComparisonOperator()
 	// main01ArrayAndSliceVariableType()
 	// main01MapVariableType()
-	main01LoopingAndBreakContinueStatement()
-	main01FunctionStatement()
+	// main01LoopingAndBreakContinueStatement()
+	// main01FunctionStatement()
+	main01StructDataType()
+
 	// 02 Modules
 }
