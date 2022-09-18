@@ -2,25 +2,25 @@
 This is a collection of go code with comment explanation and implementation.
 This repository content insipired from Udemy course by Eko Kurniawan Khannedy(a.k.a. Programmer Zaman Now ) : *Pemrograman Go-Lang : Pemula sampai Mahir*
 ## How to use it
-- Download or pull the code
-- Comment or un comment the code that you want to try
-- Happy coding!
+1. Download or pull the code
+1. Comment or un comment the code that you want to try
+1. Happy coding!
 ## Content Index
-- 01_basic.go :
-    1. main01HelloWorld()
-    2. main01VariableAndConstantDeclaration()
-    3. main01VariableTypeNumberAndBoolean()
-    4. main01VariableTypeString()
-    5. main01VariableTypeConversion()
-    6. main01TypeDeclaration()
-    7. main01MathematicOperator()
-    8. main01ComparisonOperator()
-    9. main01BooleanOperator()
-    10. main01ArrayAndSliceVariableType()
-    11. main01MapVariableType()
-    12. main01IfSwitchExpression()
-    13. main01LoopingAndBreakContinueStatement()
-    14. main01FunctionStatement()
-    15. main01StructDataType()
+1. 01_basic.go :
+    - main01HelloWorld()
+    - main01VariableAndConstantDeclaration()
+    - main01VariableTypeNumberAndBoolean()
+    - main01VariableTypeString()
+    - main01VariableTypeConversion()
+    - main01TypeDeclaration()
+    - main01MathematicOperator()
+    - main01ComparisonOperator()
+    - main01BooleanOperator()
+    - main01ArrayAndSliceVariableType()
+    - main01MapVariableType()
+    - main01IfSwitchExpression()
+    - main01LoopingAndBreakContinueStatement()
+    - main01FunctionStatement()
+    - main01StructDataType()
 
-- 02_modules.go
+1. 02_modules.go
