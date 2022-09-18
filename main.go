@@ -7,13 +7,16 @@ func main() {
 	// main01VariableTypeNumberAndBoolean()
 	// main01VariableTypeString()
 	// main01VariableTypeConversion()
+	// main01TypeDeclaration()
 	// main01MathematicOperator()
 	// main01ComparisonOperator()
+	// main01BooleanOperator()
 	// main01ArrayAndSliceVariableType()
 	// main01MapVariableType()
+	// main01IfSwitchExpression()
 	// main01LoopingAndBreakContinueStatement()
 	// main01FunctionStatement()
-	main01StructDataType()
+	// main01StructDataType()
 
 	// 02 Modules
 }
