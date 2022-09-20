@@ -17,6 +17,9 @@ func main() {
 	// main01LoopingAndBreakContinueStatement()
 	// main01FunctionStatement()
 	// main01StructDataType()
+	// main01FunctionReceiver() // 20 Sep 2022
+	// main01Interface()
+	// main01EmptyInterfaceAndNil()
 
 	// 02 Modules
 }

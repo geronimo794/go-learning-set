@@ -22,5 +22,10 @@ This repository content insipired from Udemy course by Eko Kurniawan Khannedy(a.
     - main01LoopingAndBreakContinueStatement()
     - main01FunctionStatement()
     - main01StructDataType()
+    - main01FunctionReceiver() // 20 Sep 2022
+    - main01Interface()
+    - main01EmptyInterfaceAndNil()
+
+
 
 - 02_modules.go

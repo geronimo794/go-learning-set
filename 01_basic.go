@@ -597,18 +597,15 @@ func main01FunctionStatement() {
 	varFuncWithRecover()
 }
 
-// Create a simple struct
-type address struct {
-	city     string
-	province string
-}
-
-func (add address) print() {
-
-}
 func main01StructDataType() {
 	// Struct or I call it structure is a datatype that can contain multiple and nested data type
 	// You can directly declare a struct and it's value
+	// Create a simple struct
+	type address struct {
+		city, province string
+		postal_code    int
+	}
+
 	var varAddress = address{
 		city:     "Malang",
 		province: "Jawa TImur",
@@ -622,7 +619,156 @@ func main01StructDataType() {
 	fmt.Println("varAddressDecl :", varAddressDecl)
 
 	// Or you can declare without the field
-	var varAddressDecl2 = address{"Jakarta", "DKI Jakarta"}
+	var varAddressDecl2 = address{"Jakarta", "DKI Jakarta", 769938}
 	fmt.Println("varAddressDecl2 :", varAddressDecl2)
 
+	// Struct field, can be any type or varible. Or it can be struct too
+	// Struct person have field address
+	type person struct {
+		name    string
+		address address
+	}
+	// Declaring multi level struct
+	var varRozikin person = person{
+		name: "Ach Rozikin",
+		address: address{
+			city:     "Malang",
+			province: "Jawa Timur",
+		},
+	}
+	fmt.Println(varRozikin)
+}
+
+/**
+* Function Receiver / Method / Function
+*
+**/
+// On golang, you can create function for your data type
+type typeInt int
+
+// A function receiver for simple type
+func (v typeInt) printTypeInt() {
+	fmt.Println("This print called from typeInt receiver. The value : ", v)
+}
+
+// Normally, function receiver is use for struct datatype as a method
+type typeStruct struct {
+}
+
+// A function receiver for simple type
+func (t typeStruct) printTypeStruct() {
+	fmt.Println("This print called from typeInt receiver. The value : ", t)
+}
+
+func main01FunctionReceiver() {
+	// To use function receiver/method you need to declare the type first
+	// and then you can use the function receiver/method via variable
+	// declaring type to a variable
+	var varTypeInt typeInt = 1
+	var varTypeStruct typeStruct = typeStruct{}
+
+	// Call the function receiver from the variable
+	varTypeInt.printTypeInt()
+	varTypeStruct.printTypeStruct()
+}
+
+/**
+* Interface type
+*
+**/
+// Interface is one of the abstract data type
+// A BASIC INTERFACE have collection of function/method that not implemented yet
+type intfUser interface {
+	// string // <-- You can't include type inside a interface.
+	// int    // If you include this line, this will be CONSTRAINT INTERFACE
+	getName() string
+	setName(string)
+}
+
+// STRUCT user implementing intfUser
+type user struct {
+	name string
+	age  int
+}
+
+func (u user) getName() string {
+	return u.name
+}
+func (u user) setName(n string) {
+	u.name = n
+}
+
+// STRUCT animal implementing intfUser
+type animal struct {
+	name string
+}
+
+func (a animal) getName() string {
+	return a.name
+}
+func (a animal) setName(n string) {
+	a.name = n
+}
+
+// func (i intfUser)test(){ <-- You can't use interface to function receiver
+//
+// }
+
+// Use BASIC INTERFACE a function parameter
+func funcImplementationIntfUser(i intfUser) {
+	fmt.Println("This called from interface", i.getName())
+}
+
+func main01Interface() {
+	// To try the interface, first create variable of implemented interface
+	// And it will be user struct and animal struct : user{} animal{}
+	var varStructUser = user{
+		name: "Rozi",
+		age:  26,
+	}
+	var varStructAnimal = animal{
+		name: "Panda",
+	}
+	// When know that user struct and animal struct is implementing interface intfUser
+	// We can pass the struct to function funcImplementationIntfUser
+	funcImplementationIntfUser(varStructUser)
+	funcImplementationIntfUser(varStructAnimal)
+}
+
+func main01EmptyInterfaceAndNil() {
+	/**
+	* EMPTY INTERFACE
+	**/
+	// On golang interface{} mean super parent of all the data type
+	// If you declare interface{} as a variable, you can pass anything to that variable
+	var varIntfEmpty interface{}
+	varIntfEmpty = "Hallo" // Input with string
+	fmt.Println(varIntfEmpty)
+	varIntfEmpty = 0.1 // Input with float
+	fmt.Println(varIntfEmpty)
+	varIntfEmpty = 1 // Input with int
+	fmt.Println(varIntfEmpty)
+
+	// If you use interface{} as a variable, you can't doing any operation with that variable
+	// Before you cast it to another oparateable type
+	// fmt.Println(varIntfEmpty + varIntfEmpty) // <-- This will be throw error, because the variable not it
+	intValOfVarIntfEmpty, isValidInt := varIntfEmpty.(int)
+	if isValidInt {
+		fmt.Println("Empty interface valid to cast to int", (intValOfVarIntfEmpty + intValOfVarIntfEmpty))
+	} else {
+		fmt.Println("Empty interface not a valid int", varIntfEmpty)
+	}
+
+	/**
+	* NIL VALUE
+	**/
+	// On some other programming language null is all default value of all variable
+	// But, on golang we have nil
+	// It's NOT default value for all variable. But it's for some data type like interface, function, map, slice, pointer dan channel
+	var varIntfUser intfUser = nil     // Interface data type
+	var _ func() = nil                 // Function data type
+	var varMap map[string]string = nil // Map data type
+	// var varInt int = nil               // <-- You CAN'T use nil on int data type. Int default value is 0
+	// varFunc()
+	fmt.Println(varIntfUser, varMap)
 }
