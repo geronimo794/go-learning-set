@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 )
@@ -685,6 +686,12 @@ type intfUser interface {
 	setName(string)
 }
 
+// A interface can contain interface too
+type intfUserInside interface {
+	intfUser
+	addName(string)
+}
+
 // STRUCT user implementing intfUser
 type user struct {
 	name string
@@ -709,6 +716,9 @@ func (a animal) getName() string {
 func (a animal) setName(n string) {
 	a.name = n
 }
+func (a animal) addName(n string) {
+	a.name = n
+}
 
 // func (i intfUser)test(){ <-- You can't use interface to function receiver
 //
@@ -719,6 +729,10 @@ func funcImplementationIntfUser(i intfUser) {
 	fmt.Println("This called from interface", i.getName())
 }
 
+// Interface inside interface as a function parameter
+func funcImplementationIntfUserInside(ii intfUserInside) {
+	fmt.Println("This called from interface", ii.getName())
+}
 func main01Interface() {
 	// To try the interface, first create variable of implemented interface
 	// And it will be user struct and animal struct : user{} animal{}
@@ -733,6 +747,8 @@ func main01Interface() {
 	// We can pass the struct to function funcImplementationIntfUser
 	funcImplementationIntfUser(varStructUser)
 	funcImplementationIntfUser(varStructAnimal)
+	// Struct animal impement struct under struct too
+	funcImplementationIntfUserInside(varStructAnimal)
 }
 
 func main01EmptyInterfaceAndNil() {
@@ -771,4 +787,83 @@ func main01EmptyInterfaceAndNil() {
 	// var varInt int = nil               // <-- You CAN'T use nil on int data type. Int default value is 0
 	// varFunc()
 	fmt.Println(varIntfUser, varMap)
+}
+
+/**
+* ERROR INTERFACE
+**/
+// An error interface is an interface that we can implement to reproduce error for our application
+func main01ErrorInterfaceReturnError() (int, error) {
+	// If you check errors.new file
+	// Is a struct that contain string
+	// And implement error interface
+
+	/**
+
+	func New(text string) error {
+		return &errorString{text}
+	}
+
+	// errorString is a trivial implementation of error.
+	type errorString struct {
+		s string
+	}
+
+	func (e *errorString) Error() string {
+		return e.s
+	}
+	**/
+
+	return 1, errors.New("a")
+}
+func main01ErrorInterface() {
+	// A function return int and error
+	// To return error, you need to implement error interface
+	varInt, varError := main01ErrorInterfaceReturnError()
+	fmt.Println(varInt, varError)
+}
+func main01TypeAssertions() {
+	// Type assertion is function to change the value
+	// Of variable interface{}
+	var varIntfEmpty interface{}
+	varIntfEmpty = "This is string" // Insert string to interface{}
+	// We need to cast the interface first to another variable to use it as variable
+	varIntOfvarIntfEmpty, varIsValid := varIntfEmpty.(int)
+	// If casting valid
+	if varIsValid {
+		fmt.Println("varIntfEmpty is valid : ", varIntOfvarIntfEmpty)
+	} else {
+		// If casting not valid
+		fmt.Println("varIntfEmpty is not valid : ", varIntfEmpty)
+	}
+
+	varIntfEmpty = 1 // Insert int to interface{}
+	varIntOfvarIntfEmpty, varIsValid = varIntfEmpty.(int)
+	// If casting valid
+	if varIsValid {
+		fmt.Println("varIntfEmpty is valid : ", varIntOfvarIntfEmpty)
+	} else {
+		// If casting not valid
+		fmt.Println("varIntfEmpty is not valid : ", varIntfEmpty)
+	}
+
+	// Try to change the interface value
+	// varIntfEmpty = "String"
+	// varIntfEmpty = 20
+
+	// We can use type assertion with switch
+	switch value := varIntfEmpty.(type) {
+	case string:
+		fmt.Println("Value is string :", value)
+	case int:
+		fmt.Println("Value is int :", value)
+	default:
+		fmt.Println("Value is unknown :", value)
+	}
+}
+func main01PointerDataType() {
+	// On programming language, pointer data type is use to
+	// pointing the memory address of computer
+	// after we got the address, we can change value of the address
+	// To declare pointer we can u
 }

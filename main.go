@@ -20,6 +20,8 @@ func main() {
 	// main01FunctionReceiver() // 20 Sep 2022
 	// main01Interface()
 	// main01EmptyInterfaceAndNil()
+	// main01ErrorInterface() // 21 Sep 2022
+	// main01TypeAssertions()
 
 	// 02 Modules
 }
