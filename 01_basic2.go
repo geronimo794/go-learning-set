@@ -22,4 +22,12 @@ import (
 func main01CallPackage() {
 	// To call the package function first you need type the package name, and then the property or the function name
 	fmt.Println(package01basic.CalculateNumberPub(1, 2, 3, 4))
+
+	// We just can call the property of package with upper case first letter
+	// fmt.Println(package01basic.calculateNumberPriv(1, 2, 3, 4)) // <-- This will throw error
+	// package01basic have calculateNumberPriv function,
+	// but we can't call it because it's private indicated from first letter of function or property
+
+	// Call another public function with initialize
+	fmt.Println(package01basic.GetName())
 }
