@@ -865,5 +865,74 @@ func main01PointerDataType() {
 	// On programming language, pointer data type is use to
 	// pointing the memory address of computer
 	// after we got the address, we can change value of the address
-	// To declare pointer we can u
+
+	// To demonstrate pointer, first we create a struct
+	type person struct {
+		name string
+	}
+
+	var varStructPerson = person{name: "Rozi"}
+	var varStructPerson2 = varStructPerson
+	fmt.Println(varStructPerson, varStructPerson2) // Var struct have the same value
+	varStructPerson2.name = "Achmad"               // Change the value of varStructPerson2
+	fmt.Println(varStructPerson, varStructPerson2) // varStructPerson have different value of varStructPerson
+
+	// Let's try use pointer
+	var varStructPersonPointer *person                    // Create a pointer of struct person
+	varStructPersonPointer = &varStructPerson             // The pointer take value of memory addres with &
+	fmt.Println(varStructPerson, *varStructPersonPointer) // Var struct have the same value. When we use pointer, we need * to get the value of the address
+	varStructPersonPointer.name = "Achmad Rozikin"        // Var the value of varStructPersonPointer
+	fmt.Println(varStructPerson, *varStructPersonPointer) // varStructPerson and varStructPersonPointer have the same value. Because pointer pointing on varStructPerson
+
+	// Using pointer data type on function
+	// First we create a normal function
+	var varFuncNormal func(person, string) = func(p person, s string) {
+		p.name = s
+	}
+	// Create a pointer function
+	var varFuncPointer func(*person, string) = func(p *person, s string) {
+		p.name = s
+	}
+
+	// Let's try to change the value of struct person
+	fmt.Println("Current value : ", varStructPerson)
+	varFuncNormal(varStructPerson, "Edited with varFuncNormal") // This is will not give any effect
+	fmt.Println("After change the value : ", varStructPerson)
+
+	// With function pointer
+	fmt.Println("Current value : ", varStructPerson)
+	varFuncPointer(&varStructPerson, "Edited with varFuncPointer") // This will change the value
+	fmt.Println("After change the value : ", varStructPerson)
+
+	// We can create a null pointer value with keyword new
+	var varStructPersonPointerNew = new(person) // Equivalent to var varStructPersonPointer *person
+	var varStructPersonPointerNew2 = varStructPersonPointerNew
+	varStructPersonPointerNew2.name = "Name is change"
+	fmt.Println(*varStructPersonPointerNew, *varStructPersonPointerNew2) // The 2 value will have the same value
+
+	// We can use pointer on function method too
+	var varStructWithMethodPointer typeStructWithMethodPointer = typeStructWithMethodPointer{name: "Achmad Rozikin"}
+	fmt.Println("Current value : ", varStructWithMethodPointer)
+	varStructWithMethodPointer.setName("Achmad Rozikin Edited With setName")
+	fmt.Println("After change the value : ", varStructWithMethodPointer)
+
+	// Change value with pointer
+	fmt.Println("Current value : ", varStructWithMethodPointer)
+	varStructWithMethodPointer.setNameWithPointer("Achmad Rozikin Edited With setNameWithPointer")
+	fmt.Println("After change the value : ", varStructWithMethodPointer)
+}
+
+// A struct
+type typeStructWithMethodPointer struct {
+	name string
+}
+
+// Function receiver without pointer
+func (t typeStructWithMethodPointer) setName(s string) {
+	t.name = s
+}
+
+// Function receiver with pointer
+func (t *typeStructWithMethodPointer) setNameWithPointer(s string) {
+	t.name = s
 }

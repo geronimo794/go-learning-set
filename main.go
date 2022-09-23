@@ -22,6 +22,8 @@ func main() {
 	// main01EmptyInterfaceAndNil()
 	// main01ErrorInterface() // 21 Sep 2022
 	// main01TypeAssertions()
+	// main01PointerDataType() // 23 Sep 2022
+	// main01CallPackage()
 
 	// 02 Modules
 }
