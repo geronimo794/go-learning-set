@@ -26,6 +26,7 @@ func main() {
 
 	// 01 Basic2
 	main01CallPackage()
+	main01PackageOs()
 
 	// 02 Modules
 }

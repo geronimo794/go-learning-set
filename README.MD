@@ -8,6 +8,7 @@ This repository content insipired from Udemy course by Eko Kurniawan Khannedy(a.
 1. Uncomment the code that you want to try
 1. Example : Function main01CallPackage() is placed on 01_basic2.go. So I will execute "go run main.go 01_basic2.go"
 1. Happy coding and happy trying!
+1. I hope this source code can accelerate your learning journey!
 ## Content Index
 - 01_basic1.go :
     - main01HelloWorld()
@@ -33,6 +34,7 @@ This repository content insipired from Udemy course by Eko Kurniawan Khannedy(a.
 	- main01PointerDataType() // 23 Sep 2022
 - 01_basic2.go :
 	- main01CallPackage()
+	- main01PackageOs()
 
 
 
