@@ -35,6 +35,8 @@ This repository content insipired from Udemy course by Eko Kurniawan Khannedy(a.
 - 01_basic2.go :
 	- main01CallPackage()
 	- main01PackageOs()
+	- main01PackageString()
+	- main01PackageStrConv()
 
 
 

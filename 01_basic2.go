@@ -107,6 +107,39 @@ func main01PackageStrConv() {
 	if errVarBool != nil {
 		log.Fatal(errVarBool)
 	}
-	fmt.Println(varBool)
+	fmt.Println("varBool :", varBool)
 
+	// Convert string to float variable
+	// #1 Param : String float
+	// #2 Param : Bit Size 8, 16, 32. Or whatever you want
+	varFloat, errVarFloat := strconv.ParseFloat("2.1", 16)
+	if errVarFloat != nil {
+		log.Fatal(errVarFloat)
+	}
+	fmt.Println("varFloat :", varFloat)
+
+	// Convert string to int64 variable
+	// #1 Param : String int
+	// #2 Param : Base(Decimal is 10, Hexadecimal is 16 and any other value)
+	// #3 Param : Bit Size 8, 16, 32. Or whatever you want
+	varInt, errVarInt := strconv.ParseInt("10", 0, 8)
+	if errVarInt != nil {
+		log.Fatal(errVarInt)
+	}
+	fmt.Println("varInt :", varInt)
+
+	// Convert string to int with simple usage
+	varIntSimple, errVarIntSimple := strconv.Atoi("10")
+	if errVarIntSimple != nil {
+		log.Fatal(errVarInt)
+	}
+	fmt.Println("varIntSimple :", varIntSimple)
+
+	// Convert bool to string
+	varBoolString := strconv.FormatBool(false)
+	fmt.Println("varBoolString :", varBoolString)
+
+	// Convert bool to string
+	varIntString := strconv.Itoa(123)
+	fmt.Println("varIntString :", varIntString)
 }
