@@ -25,8 +25,9 @@ func main() {
 	// main01PointerDataType() // 23 Sep 2022
 
 	// 01 Basic2
-	main01CallPackage()
-	main01PackageOs()
+	// main01CallPackage()
+	// main01PackageOs()
+	// main01PackageString()
 
 	// 02 Modules
 }

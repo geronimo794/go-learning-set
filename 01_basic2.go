@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
+	"strings"
 
 	"github.com/geronimo794/go-learning-set/package01basic"
 )
@@ -85,5 +87,26 @@ func main01PackageOs() {
 	// With os package we can get argument from the terminal when we execute the application
 	var varArgs = os.Args
 	fmt.Println("Terminal Arguments :", varArgs) // To add argument try add argument after file name : go run main.go 01_basic2.go this is an argument
+
+}
+
+// String Package : Package to modify string
+func main01PackageString() {
+	fmt.Println("strings.Contains :", strings.Contains("Achmad Rozikin", "Ach"))             // Check if the first string contain the second string
+	fmt.Println("strings.Split :", strings.Split("Achmad Rozikin", " "))                     // Split the string by second argument
+	fmt.Println("strings.ToLower :", strings.ToLower("Achmad Rozikin"))                      // Change to lower case
+	fmt.Println("strings.ToUpper :", strings.ToUpper("Achmad Rozikin"))                      // Change to Upper case
+	fmt.Println("strings.Trim :", strings.Trim("________Achmad _ Rozikin______", "_"))       // Trim or remove any character given on preffix and suffix
+	fmt.Println("strings.ReplaceAll", strings.ReplaceAll("Achmad Rozikin", "Achmad", "Ach")) // Find and replace string
+}
+
+// Strconv Pakcage : Package to to convert and interact with another data type
+func main01PackageStrConv() {
+	// Convert string to boolean variable
+	varBool, errVarBool := strconv.ParseBool("true")
+	if errVarBool != nil {
+		log.Fatal(errVarBool)
+	}
+	fmt.Println(varBool)
 
 }
